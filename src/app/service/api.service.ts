@@ -18,4 +18,9 @@ export class RestApiService {
   public guardarEstudiante(nuevo_estudiante: any): Observable<any>{
     return this.http.post(this.urlApi, nuevo_estudiante);
   }
+
+  public editarEstudiante(id: string, datosNuevos: any): Observable<any>{
+    return this.http.put(`${this.urlApi}/${id}`, datosNuevos);
+  }
+
 }

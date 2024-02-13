@@ -19,7 +19,7 @@ export class NuevoUsuarioComponent {
     this.formNuevoEstudiante = new FormGroup({
       nombre: new FormControl('',[Validators.required, Validators.minLength(3)]),
       apellido: new FormControl('',[Validators.required, Validators.minLength(3)]),
-      edad: new FormControl('',[Validators.required, Validators.minLength(1)]),
+      edad: new FormControl('',[Validators.required, Validators.pattern('^[0-9]*$')]),
       carrera: new FormControl('',Validators.required),
     });
   }

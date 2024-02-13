@@ -22,8 +22,7 @@
             <input matInput type="text" formControlName="carrera">
         </mat-form-field>
 
-        <button mat-raised-button color="primary" type="submit" (click)="guardarDatosEstudiante()">Guardar</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!formNuevoEstudiante.valid" (click)="guardarDatosEstudiante()">Guardar</button>
         <button mat-raised-button (click)="limpiarFormulario()">Cancelar</button>
-
     </form>
 </section>
