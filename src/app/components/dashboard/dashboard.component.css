@@ -1,0 +1,7 @@
+.contenedorTablaEstudiantes {
+    display: flex;
+    justify-content: center;
+}
+.campo {
+    text-align: center; /* Centra el texto horizontalmente */
+  }
