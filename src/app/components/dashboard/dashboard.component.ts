@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from './navbar/navbar.component';
 import {MatTableModule} from '@angular/material/table';
+import { RestApiService } from '../../service/api.service';
+
 
 export interface Estudiante {
   nombre: string;
@@ -25,12 +27,22 @@ const estudiantes: Estudiante[] = [
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit{
 
  
   nombres_columnas: string[] = ['nombre', 'apellido', 'edad', 'carrera'];
 
   //GET A ESTUDIANTES
-  lista_estudiantes = estudiantes;
+  data: Estudiante[] = [];
+  constructor(private servicioRest: RestApiService){
 
+  }
+  
+  ngOnInit(): void {
+    this.servicioRest.getEstudiantes().subscribe( datos =>{
+      this.data = datos;
+      console.log(this.data);
+    });
+  }
+  lista_estudiantes = estudiantes;
 }
