@@ -23,4 +23,8 @@ export class RestApiService {
     return this.http.put(`${this.urlApi}/${id}`, datosNuevos);
   }
 
+  public eliminarEstudiante(id: string): Observable<any>{
+    return this.http.delete(`${this.urlApi}/${id}`);
+  }
+
 }

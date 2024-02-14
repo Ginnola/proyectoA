@@ -3,5 +3,16 @@
     justify-content: center;
 }
 .campo {
-    text-align: center; /* Centra el texto horizontalmente */
+    text-align: center; 
+  }
+.botonEliminar {
+    background-color: transparent;
+    padding: 0; 
+    border: none; 
+}
+.eliminar-button:active {
+    background-color: red; /* Cambia el color de fondo al presionar el botón */
+}
+.botonEliminar:active img {
+    transform: scale(0.9); /* Escala la imagen al 90% cuando se activa el botón */
   }

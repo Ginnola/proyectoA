@@ -18,9 +18,9 @@ export interface Estudiante {
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent implements OnInit{
-
+  eliminar = "../../../assets/borrar.png";
  
-  nombres_columnas: string[] = ['nombre', 'apellido', 'edad', 'carrera'];
+  nombres_columnas: string[] = ['nombre', 'apellido', 'edad', 'carrera', 'opciones'];
   lista_estudiantes: Estudiante[] = [];
 
   //GET A ESTUDIANTES
@@ -29,10 +29,26 @@ export class DashboardComponent implements OnInit{
   }
   
   ngOnInit(): void {
-    this.servicioRest.getEstudiantes().subscribe( datos =>{
+    this.cargarEstudiantes();
+  }
+
+  cargarEstudiantes(): void {
+    this.servicioRest.getEstudiantes().subscribe(datos => {
       this.lista_estudiantes = datos;
       console.log(this.lista_estudiantes);
     });
+  }
+
+  eliminarEstudiante(id: string): void {
+    this.servicioRest.eliminarEstudiante(id).subscribe(
+      response => {
+        console.log('Estudiante eliminado exitosamente', response);
+        this.cargarEstudiantes();
+      },
+      error => {
+        console.error('Error al eliminar estudiante', error);
+      }
+    );
   }
   
 }
